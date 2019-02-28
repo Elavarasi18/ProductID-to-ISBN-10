@@ -1,0 +1,35 @@
+import java.util.Scanner;
+public class ISBN {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String productID,isbn1="",isbn;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the ProductID: ");
+		productID=sc.next();
+		
+		int length = productID.length();
+		
+		for(int i=3;i<=length-1;i++)
+		{
+			isbn1=isbn1+productID.charAt(i);
+		}
+		
+		
+		
+	        int sum = 0;
+	        int n=Integer.parseInt(isbn1);
+	        for (int i = 2; i <= 10; i++) {
+	            int digit = n % 10;                // rightmost digit
+	            sum = sum + i * digit;
+	            n = n / 10;
+	        }
+	     
+	        // print out check digit, use X for 10
+	        System.out.print("The full ISBN number is " + isbn1);
+	        if      (sum % 11 == 1) System.out.println("X");
+	        else if (sum % 11 == 0) System.out.println("0");
+	        else                    System.out.println(11 - (sum % 11));
+	}
+
+}
